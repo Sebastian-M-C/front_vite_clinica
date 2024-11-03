@@ -1,0 +1,25 @@
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 20px;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .header-title {
+    color: #0056b3;
+    font-size: 2rem;
+  }
+  
+  .header-nav a {
+    margin-left: 15px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .header-nav a:hover {
+    text-decoration: underline;
+  }
+  

@@ -1,0 +1,145 @@
+body {
+    background-color: white; /* Asegura que todo el fondo de la página sea blanco */
+    margin: 0; /* Quita los márgenes predeterminados */
+    padding: 0; /* Quita el padding predeterminado */
+    min-height: 100vh; /* Asegura que el fondo cubra toda la altura de la página */
+  }
+  
+  .home-container {
+    font-family: 'Arial', sans-serif;
+    background-color: white; /* Fondo blanco para el contenedor */
+    min-height: 100vh; /* Asegura que el fondo cubra toda la pantalla */
+    padding: 20px;
+  }
+  
+  .home-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+    flex-wrap: wrap; /* Permite que el header se ajuste en pantallas más pequeñas */
+  }
+  
+  .home-nav a {
+    margin-right: 15px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  .create-account-btn {
+    background-color: #0056b3;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px; /* Agrega espacio cuando el botón pasa a la siguiente línea */
+  }
+  
+  .home-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 50px;
+    background-color: #6a6ce4;
+    border-radius: 10px;
+    padding: 20px;
+    color: #fff;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan */
+  }
+  
+  .home-text {
+    flex: 1 1 45%; /* Ajusta el tamaño en pantallas más pequeñas */
+    margin-bottom: 20px;
+    text-align: left; /* Ajuste del texto */
+  }
+  
+  .home-text h2 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .home-text p {
+    margin-bottom: 20px;
+  }
+  
+  .book-appointment-btn {
+    background-color: #fff;
+    color: #6a6ce4;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .home-image {
+    flex: 1 1 45%; /* Ajusta el tamaño en pantallas más pequeñas */
+    margin-bottom: 20px;
+  }
+  
+  .home-image img {
+    max-width: 100%;
+    border-radius: 10px;
+  }
+  
+  .home-title {
+    color: #0056b3; /* Cambia este valor al color que prefieras */
+    font-size: 2rem; /* Ajusta el tamaño de la fuente si es necesario */
+    font-weight: bold; /* Asegura que el texto esté en negrita */
+  }
+  
+  .footer-contact {
+    color: #333;
+  }
+  
+  .footer-copyright {
+    color: #333;
+  }
+  
+  /* Media query para pantallas de tamaño medio */
+  @media (max-width: 768px) {
+    .home-header {
+      flex-direction: column; /* Hace que el header se apile verticalmente */
+      align-items: center;
+    }
+  
+    .home-nav a {
+      margin-right: 10px; /* Reduce el margen entre los enlaces */
+    }
+  
+    .home-content {
+      flex-direction: column; /* Cambia la dirección del contenido a vertical */
+      text-align: center; /* Centra el contenido */
+    }
+  
+    .home-text, .home-image {
+      flex: 1 1 100%; /* Los elementos ocupan todo el ancho */
+      margin-bottom: 20px;
+    }
+  
+    .home-text h2 {
+      font-size: 1.5rem; /* Reduce el tamaño del título */
+    }
+  }
+  
+  /* Media query para pantallas pequeñas */
+  @media (max-width: 480px) {
+    .home-title {
+      font-size: 1.5rem; /* Reduce el tamaño del título */
+    }
+  
+    .create-account-btn {
+      padding: 8px 15px; /* Reduce el tamaño del botón */
+    }
+  
+    .home-text h2 {
+      font-size: 1.2rem; /* Reduce aún más el tamaño del título */
+    }
+  
+    .book-appointment-btn {
+      padding: 8px 15px; /* Reduce el tamaño del botón */
+    }
+  }
+  
