@@ -36,3 +36,34 @@ export const eliminarEspecialidad = async (id: number) => {
     throw error;
   }
 };
+
+export const crearMedico = async (medico: { nombreCompleto: string; especialidadId: string; usuarioNombre: string }) => {
+  try {
+    const response = await apiClient.post('/medicos', medico);
+    return response.data;
+  } catch (error) {
+    console.error('Error creando médico', error);
+    throw error;
+  }
+};
+
+export const getMedicosByEspecialidad = async (especialidadId: string) => {
+  try {
+    const response = await apiClient.get(`/medicos/especialidad/${especialidadId}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching médicos por especialidad', error);
+    throw error;
+  }
+};
+
+
+export const getUsuarios = async () => {
+  try {
+    const response = await apiClient.get('/usuarios');
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching usuarios', error);
+    throw error;
+  }
+};

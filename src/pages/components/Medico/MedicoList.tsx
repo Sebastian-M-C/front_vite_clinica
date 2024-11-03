@@ -1,14 +1,50 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { getMedicosByEspecialidad } from '../../../services/apiService';
+import './MedicoList.css'; // Asegúrate de tener este archivo CSS para los estilos
+
+interface Medico {
+  id: number;
+  nombreCompleto: string;
+}
 
 const MedicoList: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
+  const { id } = useParams<{ id: string }>(); // ID de la especialidad
+  const [medicos, setMedicos] = useState<Medico[]>([]);
+  const navigate = useNavigate();
 
-  // Lógica para obtener los médicos de la especialidad con el ID
+  useEffect(() => {
+    const fetchMedicos = async () => {
+      if (id) {
+        try {
+          const data = await getMedicosByEspecialidad(id);
+          setMedicos(data);
+        } catch (error) {
+          console.error('Error fetching médicos', error);
+        }
+      }
+    };
+
+    fetchMedicos();
+  }, [id]);
+
+  const handleCrearMedico = () => {
+    navigate(`/crear-medico/${id}`);
+  };
+
   return (
-    <div>
-      <h2 className='texto'>Médicos de la especialidad {id}</h2>
-      {/* Aquí puedes agregar la lógica para listar los médicos */}
+    <div className="medico-list-container">
+      <h2>Médicos de la Especialidad {id}</h2>
+      {medicos.length > 0 ? (
+        <ul>
+          {medicos.map((medico) => (
+            <li key={medico.id}>{medico.nombreCompleto}</li>
+          ))}
+        </ul>
+      ) : (
+        <p>No hay médicos asociados a esta especialidad.</p>
+      )}
+      <button onClick={handleCrearMedico} className="crear-medico-btn">Crear Médico</button>
     </div>
   );
 };
