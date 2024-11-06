@@ -67,3 +67,13 @@ export const getUsuarios = async () => {
     throw error;
   }
 };
+
+export const eliminarMedico = async (medicoId: string) => {
+  try {
+    const response = await apiClient.delete(`/medicos/${medicoId}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error eliminando el médico', error);
+    throw error;
+  }
+};

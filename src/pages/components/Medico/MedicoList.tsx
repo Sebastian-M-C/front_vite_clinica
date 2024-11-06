@@ -1,49 +1,62 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { getMedicosByEspecialidad } from '../../../services/apiService';
-import './MedicoList.css'; // Asegúrate de tener este archivo CSS para los estilos
+import { getMedicosByEspecialidad, eliminarMedico } from '../../../services/apiService';
+import './MedicoList.css';
 
 interface Medico {
-  id: number;
+  id: string;
   nombreCompleto: string;
+  usuarioNombre: string;
 }
 
 const MedicoList: React.FC = () => {
-  const { id } = useParams<{ id: string }>(); // ID de la especialidad
+  const { id: especialidadId } = useParams<{ id: string }>();
   const [medicos, setMedicos] = useState<Medico[]>([]);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchMedicos = async () => {
-      if (id) {
+    if (especialidadId) {
+      const fetchMedicos = async () => {
         try {
-          const data = await getMedicosByEspecialidad(id);
+          const data = await getMedicosByEspecialidad(especialidadId);
           setMedicos(data);
         } catch (error) {
           console.error('Error fetching médicos', error);
         }
-      }
-    };
+      };
+      fetchMedicos();
+    }
+  }, [especialidadId]);
 
-    fetchMedicos();
-  }, [id]);
+  const handleEliminar = async (medicoId: string) => {
+    try {
+      await eliminarMedico(medicoId);
+      setMedicos(medicos.filter(medico => medico.id !== medicoId)); // Actualiza la lista después de eliminar
+    } catch (error) {
+      console.error('Error eliminando médico', error);
+    }
+  };
 
   const handleCrearMedico = () => {
-    navigate(`/crear-medico/${id}`);
+    // Redirige a la página para crear un nuevo médico y pasa el especialidadId en la URL
+    navigate(`/crear-medico/${especialidadId}`);
   };
 
   return (
     <div className="medico-list-container">
-      <h2>Médicos de la Especialidad {id}</h2>
-      {medicos.length > 0 ? (
-        <ul>
-          {medicos.map((medico) => (
-            <li key={medico.id}>{medico.nombreCompleto}</li>
-          ))}
-        </ul>
-      ) : (
-        <p>No hay médicos asociados a esta especialidad.</p>
-      )}
+      <h2>Médicos de la Especialidad {especialidadId}</h2>
+      <div className="medico-list">
+        {medicos.map((medico) => (
+          <div key={medico.id} className="medico-card">
+            <h3>{medico.nombreCompleto}</h3>
+            <p>Usuario: {medico.usuarioNombre}</p>
+            <div className="medico-buttons">
+              <button className="eliminar-btn" onClick={() => handleEliminar(medico.id)}>Eliminar</button>
+              <button className="horario-btn">Horario</button>
+            </div>
+          </div>
+        ))}
+      </div>
       <button onClick={handleCrearMedico} className="crear-medico-btn">Crear Médico</button>
     </div>
   );

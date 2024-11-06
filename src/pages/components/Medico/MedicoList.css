@@ -1,44 +1,75 @@
 .medico-list-container {
-    font-family: 'Arial', sans-serif;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .medico-list-container h2 {
-    color: #0056b3;
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .medico-list-container ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .medico-list-container li {
-    background-color: #fff;
-    margin-bottom: 10px;
-    padding: 15px;
-    border-radius: 5px;
-    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .crear-medico-btn {
-    background-color: #0056b3;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    display: block;
-    margin: 20px auto;
-  }
-  
-  .crear-medico-btn:hover {
-    background-color: #0041a0;
-  }
-  
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #f7f9fc;
+  border-radius: 8px;
+}
+
+.medico-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.medico-card {
+  background-color: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.medico-card h3 {
+  color: #333;
+  font-size: 1.2em;
+  margin: 0;
+  font-weight: bold;
+}
+
+.medico-card p {
+  color: #555;
+  font-size: 0.9em;
+  margin: 5px 0;
+}
+
+.medico-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.eliminar-btn {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.horario-btn {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.eliminar-btn:hover {
+  background-color: #c0392b;
+}
+
+.horario-btn:hover {
+  background-color: #2980b9;
+}
+
+.hola{
+  color: #3498db;
+}
