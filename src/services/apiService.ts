@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-  baseURL: 'http://localhost:8080/api', // Asegúrate de que la URL base esté configurada correctamente
+  baseURL: 'http://localhost:8080/api',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -74,6 +74,32 @@ export const eliminarMedico = async (medicoId: string) => {
     return response.data;
   } catch (error) {
     console.error('Error eliminando el médico', error);
+    throw error;
+  }
+};
+
+
+export const crearHorario = async (horarioData: { fecha: string; horaFin: string; capacidadFichas: number; medicoId: number }) => {
+  const response = await apiClient.post('/horarios', horarioData);
+  return response.data;
+};
+
+
+export const getHorariosByMedico = async (medicoId: string) => {
+  try {
+    const response = await apiClient.get(`/horarios/medico/${medicoId}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching horarios:', error);
+    throw error;
+  }
+};
+
+export const eliminarHorario = async (horarioId: string) => {
+  try {
+    await apiClient.delete(`/horarios/${horarioId}`);
+  } catch (error) {
+    console.error('Error deleting horario:', error);
     throw error;
   }
 };

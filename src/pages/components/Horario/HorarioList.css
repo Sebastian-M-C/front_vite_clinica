@@ -1,0 +1,49 @@
+.horario-list-container {
+    padding: 20px;
+  }
+  
+  .horario-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .horario-card {
+    background-color: #f4f4f9;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 5px;
+  }
+  
+  .horario-card p {
+    margin: 5px 0;
+    color: #333;
+  }
+  
+  .eliminar-btn {
+    background-color: #ff5c5c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+  
+  .eliminar-btn:hover {
+    background-color: #ff3232;
+  }
+  
+  .crear-horario-btn {
+    margin-top: 20px;
+    padding: 10px 15px;
+    border: none;
+    background-color: #4caf50;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .crear-horario-btn:hover {
+    background-color: #45a049;
+  }
+  

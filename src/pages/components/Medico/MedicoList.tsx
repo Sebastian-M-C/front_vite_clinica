@@ -31,15 +31,18 @@ const MedicoList: React.FC = () => {
   const handleEliminar = async (medicoId: string) => {
     try {
       await eliminarMedico(medicoId);
-      setMedicos(medicos.filter(medico => medico.id !== medicoId)); // Actualiza la lista después de eliminar
+      setMedicos(medicos.filter(medico => medico.id !== medicoId));
     } catch (error) {
       console.error('Error eliminando médico', error);
     }
   };
 
   const handleCrearMedico = () => {
-    // Redirige a la página para crear un nuevo médico y pasa el especialidadId en la URL
     navigate(`/crear-medico/${especialidadId}`);
+  };
+
+  const handleHorarioClick = (medicoId: string) => {
+    navigate(`/horarios/${medicoId}`);
   };
 
   return (
@@ -52,7 +55,7 @@ const MedicoList: React.FC = () => {
             <p>Usuario: {medico.usuarioNombre}</p>
             <div className="medico-buttons">
               <button className="eliminar-btn" onClick={() => handleEliminar(medico.id)}>Eliminar</button>
-              <button className="horario-btn">Horario</button>
+              <button className="horario-btn" onClick={() => handleHorarioClick(medico.id)}>Horario</button>
             </div>
           </div>
         ))}
