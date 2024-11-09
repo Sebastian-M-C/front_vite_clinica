@@ -1,5 +1,6 @@
+// En `HorarioList.tsx`
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom'; // Asegúrate de importar useNavigate
 import { getHorariosByMedico, eliminarHorario } from '../../../services/apiService';
 import './HorarioList.css';
 
@@ -29,17 +30,8 @@ const HorarioList: React.FC = () => {
     }
   }, [medicoId]);
 
-  const handleEliminar = async (horarioId: string) => {
-    try {
-      await eliminarHorario(horarioId);
-      setHorarios(horarios.filter(horario => horario.id !== horarioId)); // Actualiza la lista después de eliminar
-    } catch (error) {
-      console.error('Error eliminando horario', error);
-    }
-  };
-
-  const handleCrearHorario = () => {
-    navigate(`/crear-horario/${medicoId}`);
+  const handleSacarFicha = (horarioId: string) => {
+    navigate(`/crear-ficha?horarioId=${horarioId}`);
   };
 
   return (
@@ -51,11 +43,11 @@ const HorarioList: React.FC = () => {
             <p>Fecha: {horario.fecha}</p>
             <p>Hora Fin: {horario.horaFin}</p>
             <p>Capacidad de Fichas: {horario.capacidadFichas}</p>
-            <button className="eliminar-btn" onClick={() => handleEliminar(horario.id)}>Eliminar</button>
+            <button className="eliminar-btn" onClick={() => eliminarHorario(horario.id)}>Eliminar</button>
+            <button className="sacar-ficha-btn" onClick={() => handleSacarFicha(horario.id)}>Sacar Ficha</button>
           </div>
         ))}
       </div>
-      <button onClick={handleCrearHorario} className="crear-horario-btn">Crear Horario</button>
     </div>
   );
 };
