@@ -36,7 +36,7 @@ const FichaAtencionList: React.FC = () => {
       <div className="ficha-list">
         {fichas.map((ficha) => (
           <div key={ficha.id} className="ficha-card">
-            <p className="ficha-item">Fecha de Atención: {ficha.fechaAtencion}</p>
+            {/* <p className="ficha-item">Fecha de Atención: {ficha.fechaAtencion}</p> */}
             <p className="ficha-item">Paciente: {ficha.pacienteNombre}</p>
             <p className="ficha-item">Médico: {ficha.medicoNombre}</p>
             <p className="ficha-item">Especialidad ID: {ficha.especialidadId}</p>
