@@ -137,4 +137,15 @@ export const getFichasAtencionTriaje = async () => {
   return response.data;
 };
 
+export const getAllTriaje = async () => {
+  try {
+    const response = await apiClient.get('/triaje/all');
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching triaje data:', error);
+    throw error;
+  }
+};
+
+
 

@@ -12,6 +12,7 @@ import CrearFichaAtencionForm from './pages/components/Ficha/FichaAtencionList';
 import FichaAtencionList from './pages/components/Ficha/FichaAtencionList';
 import TriajeForm from './pages/components/Triaje/TriajeForm';
 import TriajeList from './pages/components/Triaje/TriajeList';
+import HistorialList from './pages/components/Historial/HistorialList';
 
  // Asegúrate de que la ruta es correcta
 function App() {
@@ -31,7 +32,7 @@ function App() {
         <Route path="/fichas-atencion" element={<FichaAtencionList />} />
         <Route path="/triaje" element={<TriajeList />} />
         <Route path="/triaje/:id" element={<TriajeForm />} />
-        
+        <Route path="/historial-triaje" element={<HistorialList />} />
 
       </Routes>
     </Router>
