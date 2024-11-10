@@ -103,8 +103,9 @@ export const eliminarHorario = async (horarioId: string) => {
     throw error;
   }
 };
-export const createFichaAtencion = async (fichaData: { medicoId: string; horarioId: string; fechaAtencion: string }) => {
-  return apiClient.post('/fichas', fichaData);
+export const createFichaAtencion = async (fichaData: any) => {
+  const response = await apiClient.post('/fichas', fichaData);
+  return response.data;
 };
 
 export const getMedicos = async () => {
@@ -135,3 +136,5 @@ export const getFichasAtencionTriaje = async () => {
   const response = await apiClient.get('/triaje');
   return response.data;
 };
+
+
