@@ -10,6 +10,9 @@ import CrearHorarioForm from './pages/components/Horario/CrearHorarioForm';
 import HorarioList from './pages/components/Horario/HorarioList';
 import CrearFichaAtencionForm from './pages/components/Ficha/FichaAtencionList';
 import FichaAtencionList from './pages/components/Ficha/FichaAtencionList';
+import TriajeForm from './pages/components/Triaje/TriajeForm';
+import TriajeList from './pages/components/Triaje/TriajeList';
+
  // Asegúrate de que la ruta es correcta
 function App() {
   return (
@@ -26,6 +29,9 @@ function App() {
         <Route path="/horarios/:medicoId" element={<HorarioList />} />
         <Route path="/crear-ficha" element={<CrearFichaAtencionForm />} />
         <Route path="/fichas-atencion" element={<FichaAtencionList />} />
+        <Route path="/triaje" element={<TriajeList />} />
+        <Route path="/triaje/:id" element={<TriajeForm />} />
+        
 
       </Routes>
     </Router>

@@ -1,0 +1,50 @@
+.triaje-list-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.triaje-list-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1d4ed8; /* Azul para el título */
+  margin-bottom: 20px;
+}
+
+.triaje-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+}
+
+.triaje-card {
+  background-color: #f9fafb; /* Fondo claro */
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 200px;
+  text-align: center;
+}
+
+.triaje-card-text {
+  color: black; /* Color de texto en negro */
+  font-weight: 500;
+  margin: 5px 0;
+}
+
+.ver-btn {
+  background-color: #000;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.ver-btn:hover {
+  background-color: #333;
+}

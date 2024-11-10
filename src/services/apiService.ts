@@ -120,3 +120,18 @@ export const getFichasAtencion = async () => {
   const response = await apiClient.get('/fichas');
   return response.data;
 };
+
+export const getFichasParaTriaje = async () => {
+  const response = await apiClient.get('/fichas/triaje');
+  return response.data;
+};
+
+export const crearTriaje = async (triajeData: { fichaAtencionId: number; descripcion: string }) => {
+  const response = await apiClient.post('/triaje', triajeData);
+  return response.data;
+};
+
+export const getFichasAtencionTriaje = async () => {
+  const response = await apiClient.get('/triaje');
+  return response.data;
+};
