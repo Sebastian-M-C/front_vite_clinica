@@ -13,6 +13,7 @@ import FichaAtencionList from './pages/components/Ficha/FichaAtencionList';
 import TriajeForm from './pages/components/Triaje/TriajeForm';
 import TriajeList from './pages/components/Triaje/TriajeList';
 import HistorialList from './pages/components/Historial/HistorialList';
+import CrearRecetaForm from './pages/components/Receta/CrearRecetaForm';
 
  // Asegúrate de que la ruta es correcta
 function App() {
@@ -33,6 +34,7 @@ function App() {
         <Route path="/triaje" element={<TriajeList />} />
         <Route path="/triaje/:id" element={<TriajeForm />} />
         <Route path="/historial-triaje" element={<HistorialList />} />
+        <Route path="/crear-receta" element={<CrearRecetaForm />} />
 
       </Routes>
     </Router>
