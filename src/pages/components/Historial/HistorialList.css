@@ -59,3 +59,20 @@
 .colorcito{
   color: #0056b3;
 }
+
+.report-button {
+  display: block;
+  margin: 10px auto 20px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #ffffff;
+  background-color: #0056b3;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.report-button:hover {
+  background-color: #004099;
+}
