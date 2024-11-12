@@ -10,12 +10,17 @@ const CrearRecetaForm: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:8080/api/recetas', { descripcion });
+      // Elimina `response` si no es necesario
+      await axios.post('http://localhost:8080/api/recetas', { descripcion });
+      
+      // Configura el mensaje de éxito y limpia los campos
       setSuccessMessage("Receta creada con éxito.");
       setErrorMessage("");
       setDescripcion("");
     } catch (error) {
       console.error("Error al crear la receta:", error);
+      
+      // Configura el mensaje de error
       setErrorMessage("Hubo un problema al crear la receta.");
       setSuccessMessage("");
     }
@@ -40,6 +45,6 @@ const CrearRecetaForm: React.FC = () => {
       {errorMessage && <p className="error-message">{errorMessage}</p>}
     </div>
   );
-}
+};
 
 export default CrearRecetaForm;

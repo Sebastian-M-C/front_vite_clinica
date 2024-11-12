@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom'; // Eliminamos `useParams` si `id` no es necesario
 import { crearMedico, getEspecialidades, getUsuarios } from '../../../services/apiService';
 import './CrearMedicoForm.css';
 
@@ -14,7 +14,6 @@ interface Usuario {
 }
 
 const CrearMedicoForm: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
   const [nombreCompleto, setNombreCompleto] = useState('');
   const [especialidades, setEspecialidades] = useState<Especialidad[]>([]);
   const [usuarios, setUsuarios] = useState<Usuario[]>([]);
@@ -48,7 +47,11 @@ const CrearMedicoForm: React.FC = () => {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
-      await crearMedico({ nombreCompleto, especialidadId: especialidadSeleccionada, usuarioNombre: usuarioSeleccionado });
+      await crearMedico({
+        nombreCompleto,
+        especialidadId: especialidadSeleccionada,
+        usuarioNombre: usuarioSeleccionado,
+      });
       navigate(`/medicos/${especialidadSeleccionada}`);
     } catch (error) {
       console.error('Error creando médico', error);
