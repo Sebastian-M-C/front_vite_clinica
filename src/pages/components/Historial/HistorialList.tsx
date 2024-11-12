@@ -20,6 +20,7 @@ const HistorialTriajeList: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        // Cargar datos de triaje y recetas desde el backend
         const triajeData = await getAllTriaje();
         setTriajes(triajeData);
 
@@ -36,12 +37,14 @@ const HistorialTriajeList: React.FC = () => {
   const generatePDF = () => {
     const doc = new jsPDF();
 
+    // Título del documento
     doc.setFontSize(18);
     doc.text('Historial Clínico', 10, 10);
 
+    // Sección de Triaje
     doc.setFontSize(14);
     doc.text('Triaje', 10, 20);
-    let yOffset = 30; // Margen inicial para la sección de Triaje
+    let yOffset = 30;
 
     triajes.forEach((triaje) => {
       doc.setFontSize(12);
@@ -49,8 +52,9 @@ const HistorialTriajeList: React.FC = () => {
       yOffset += 10;
     });
 
-    yOffset += 10; // Espacio entre Triaje y Recetas
+    yOffset += 10; // Espacio entre las secciones
 
+    // Sección de Recetas
     doc.setFontSize(14);
     doc.text('Recetas', 10, yOffset);
     yOffset += 10;
@@ -66,26 +70,37 @@ const HistorialTriajeList: React.FC = () => {
 
   return (
     <div className="historial-triaje-container">
-      <h2 className="historial-triaje-title">Historial</h2>
+      <h2 className="historial-triaje-title">Historial Clínico</h2>
 
-      <button onClick={generatePDF} className="report-button">Reportes</button>
+      {/* Botón para generar el PDF */}
+      <button onClick={generatePDF} className="report-button">Generar Reporte (PDF)</button>
 
+      {/* Lista de Triaje */}
       <div className="triaje-list">
         <h3>Triaje</h3>
-        {triajes.map((triaje) => (
-          <div key={triaje.id} className="triaje-card">
-            <p className="colorcito">{triaje.descripcion}</p>
-          </div>
-        ))}
+        {triajes.length > 0 ? (
+          triajes.map((triaje) => (
+            <div key={triaje.id} className="triaje-card">
+              <p className="colorcito">{triaje.descripcion}</p>
+            </div>
+          ))
+        ) : (
+          <p>No hay registros de triaje.</p>
+        )}
       </div>
 
+      {/* Lista de Recetas */}
       <div className="receta-list">
-        <h3 className='colorcito'>Recetas</h3>
-        {recetas.map((receta) => (
-          <div key={receta.id} className="receta-card">
-            <p className="colorcito">{receta.descripcion}</p>
-          </div>
-        ))}
+        <h3 className="colorcito">Recetas</h3>
+        {recetas.length > 0 ? (
+          recetas.map((receta) => (
+            <div key={receta.id} className="receta-card">
+              <p className="colorcito">{receta.descripcion}</p>
+            </div>
+          ))
+        ) : (
+          <p>No hay recetas registradas.</p>
+        )}
       </div>
     </div>
   );
