@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getMedicosByEspecialidad, eliminarMedico } from '../../../services/apiService';
 import './MedicoList.css';
+import Header from '../Header/Header';
 
 interface Medico {
   id: string;
@@ -48,20 +49,29 @@ const MedicoList: React.FC = () => {
 
   return (
     <div className="medico-list-container">
-      <h2>Médicos de la Especialidad {especialidadId}</h2>
-      <div className="medico-list">
-        {medicos.map((medico) => (
-          <div key={medico.id} className="medico-card">
-            <h3>{medico.nombreCompleto}</h3>
-            <p>Usuario: {medico.usuarioNombre}</p>
-            <div className="medico-buttons">
-              <button className="eliminar-btn" onClick={() => handleEliminar(medico.id)}>Eliminar</button>
-              <button className="horario-btn" onClick={() => handleHorarioClick(medico.id)}>Horario</button>
+      <Header />
+      <div className="content-wrapper">
+        <h2 className="title">Médicos de la Especialidad</h2>
+        <div className="medico-list">
+          {medicos.map((medico) => (
+            <div key={medico.id} className="medico-card">
+              <h3 className="medico-name">{medico.nombreCompleto}</h3>
+              <p className="medico-username">Usuario: {medico.usuarioNombre}</p>
+              <div className="medico-buttons">
+                <button className="eliminar-btn" onClick={() => handleEliminar(medico.id)}>
+                  Eliminar
+                </button>
+                <button className="horario-btn" onClick={() => handleHorarioClick(medico.id)}>
+                  Horario
+                </button>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+        <button onClick={handleCrearMedico} className="crear-medico-btn">
+          Crear Médico
+        </button>
       </div>
-      <button onClick={handleCrearMedico} className="crear-medico-btn">Crear Médico</button>
     </div>
   );
 };

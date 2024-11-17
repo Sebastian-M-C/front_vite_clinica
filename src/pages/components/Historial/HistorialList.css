@@ -1,78 +1,97 @@
-/* HistorialTriajeList.css */
+/* Contenedor Principal */
 .historial-triaje-container {
+  font-family: 'Arial', sans-serif;
+  background-color: #fff;
   padding: 20px;
-  max-width: 600px;
-  margin: 0 auto;
-  font-family: Arial, sans-serif;
-}
-
-.historial-triaje-title {
-  font-size: 2rem;
-  color: #0056b3;
-  text-align: center;
-  margin-bottom: 20px;
-  font-weight: bold;
-}
-
-.triaje-list, .receta-list {
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  align-items: center;
+  gap: 20px;
 }
 
-.triaje-card, .receta-card {
+/* Título */
+.historial-triaje-title {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Botón de Reporte */
+.report-button {
+  background-color: #3498db;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.report-button:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+}
+
+/* Contenedor de Columnas */
+.historial-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  max-width: 1000px;
+}
+
+/* Columnas */
+.triaje-column, .receta-column {
+  flex: 1;
+  background-color: #f9f9f9;
   padding: 20px;
   border-radius: 8px;
-  background-color: #ffffff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  transition: transform 0.2s, box-shadow 0.2s;
-  font-size: 1.1rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.triaje-card:hover, .receta-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+/* Encabezados de Columnas */
+.triaje-column h3, .receta-column h3 {
+  font-size: 1.5rem;
+  color: #34495e;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* Tarjetas */
+.triaje-card, .receta-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin-bottom: 15px;
 }
 
 .triaje-card p, .receta-card p {
   margin: 0;
-  color: #333333;
   font-size: 1rem;
-  line-height: 1.5;
+  color: #555;
 }
 
-.colorcito {
-  color: #0056b3;
-  font-weight: 500;
-}
-
-.section-title {
-  font-size: 1.5rem;
-  color: #0056b3;
-  margin-top: 30px;
-  text-align: left;
-  border-bottom: 2px solid #0056b3;
-  padding-bottom: 5px;
-  margin-bottom: 10px;
-}
-
-.colorcito{
-  color: #0056b3;
-}
-
-.report-button {
-  display: block;
-  margin: 10px auto 20px;
-  padding: 10px 20px;
+/* Mensajes Vacíos */
+p {
   font-size: 1rem;
-  color: #ffffff;
-  background-color: #0056b3;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  color: #888;
+  text-align: center;
 }
 
-.report-button:hover {
-  background-color: #004099;
+/* Responsividad */
+@media (max-width: 768px) {
+  .historial-content {
+    flex-direction: column;
+  }
+
+  .triaje-column, .receta-column {
+    width: 100%;
+  }
 }

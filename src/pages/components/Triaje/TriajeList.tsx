@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getFichasAtencionTriaje } from '../../../services/apiService';
 import { useNavigate } from 'react-router-dom';
 import './TriajeLista.css';
+import Header from '../Header/Header';
 
 interface FichaAtencion {
   id: number;
@@ -32,6 +33,7 @@ const TriajeList: React.FC = () => {
 
   return (
     <div className="triaje-list-container">
+      <Header/>
       <h2 className="triaje-list-title">Fichas de Atención en Triaje</h2>
       <div className="triaje-list">
         {fichas.map(ficha => (

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { getHorariosByMedico, eliminarHorario } from '../../../services/apiService';
 import './HorarioList.css';
+import Header from '../Header/Header';
 
 interface Horario {
   id: string;
@@ -49,6 +50,7 @@ const HorarioList: React.FC = () => {
 
   return (
     <div className="horario-list-container">
+      <Header/>
       <h2>Horarios del Médico {medicoId} </h2>
       <div className="horario-list">
         {horarios.map((horario) => (

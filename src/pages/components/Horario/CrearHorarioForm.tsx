@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { crearHorario } from '../../../services/apiService'; // Asegúrate de que este método exista en apiService
 import './CrearHorarioForm.css';
+import Header from '../Header/Header';
 
 interface CrearHorarioFormProps {}
 
@@ -30,6 +31,7 @@ const CrearHorarioForm: React.FC<CrearHorarioFormProps> = () => {
 
   return (
     <div className="crear-horario-form-container">
+      <Header/>
       <h2>Crear Horario para el Médico</h2>
       <form onSubmit={handleSubmit} className="crear-horario-form">
         <label htmlFor="fecha">Fecha:</label>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { crearTriaje } from '../../../services/apiService'; // Crear este método en apiService
 import './TriajeForm.css';
+import Header from '../Header/Header';
 
 const TriajeForm: React.FC = () => {
   const { id } = useParams<{ id: string }>(); // ID de la ficha de atención
@@ -12,7 +13,7 @@ const TriajeForm: React.FC = () => {
     e.preventDefault();
     try {
       await crearTriaje({ fichaAtencionId: Number(id), descripcion });
-      navigate('/historial'); // Redirige al historial después de guardar
+      navigate('/historial-triaje'); // Redirige al historial después de guardar
     } catch (error) {
       console.error('Error creando triaje:', error);
     }
@@ -20,17 +21,21 @@ const TriajeForm: React.FC = () => {
 
   return (
     <div className="triaje-form-container">
-      <h2>Registrar Estado del Paciente en Triaje</h2>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="descripcion">Descripción:</label>
-        <textarea
-          id="descripcion"
-          value={descripcion}
-          onChange={(e) => setDescripcion(e.target.value)}
-          required
-        />
-        <button type="submit">Guardar</button>
-      </form>
+      <Header />
+      <div className="form-wrapper">
+        <h2>Registrar Estado del Paciente en Triaje</h2>
+        <form onSubmit={handleSubmit} className="triaje-form">
+          <label htmlFor="descripcion">Descripción:</label>
+          <textarea
+            id="descripcion"
+            value={descripcion}
+            onChange={(e) => setDescripcion(e.target.value)}
+            required
+            placeholder="Describe el estado actual del paciente..."
+          />
+          <button type="submit" className="guardar-btn">Guardar</button>
+        </form>
+      </div>
     </div>
   );
 };

@@ -142,4 +142,20 @@ body {
       padding: 8px 15px; /* Reduce el tamaño del botón */
     }
   }
+
+  .logout-btn {
+    background-color: #ff4d4f;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-left: 10px;
+  }
+  
+  .logout-btn:hover {
+    background-color: #e63946;
+  }
+  
   

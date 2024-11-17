@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getAllTriaje, getAllRecetas } from '../../../services/apiService';
 import jsPDF from 'jspdf';
 import './HistorialList.css';
+import Header from '../Header/Header';
 
 interface Triaje {
   id: number;
@@ -70,37 +71,39 @@ const HistorialTriajeList: React.FC = () => {
 
   return (
     <div className="historial-triaje-container">
+      <Header />
       <h2 className="historial-triaje-title">Historial Clínico</h2>
 
-      {/* Botón para generar el PDF */}
       <button onClick={generatePDF} className="report-button">Generar Reporte (PDF)</button>
 
-      {/* Lista de Triaje */}
-      <div className="triaje-list">
-        <h3>Triaje</h3>
-        {triajes.length > 0 ? (
-          triajes.map((triaje) => (
-            <div key={triaje.id} className="triaje-card">
-              <p className="colorcito">{triaje.descripcion}</p>
-            </div>
-          ))
-        ) : (
-          <p>No hay registros de triaje.</p>
-        )}
-      </div>
+      <div className="historial-content">
+        {/* Columna de Triajes */}
+        <div className="triaje-column">
+          <h3>Triaje</h3>
+          {triajes.length > 0 ? (
+            triajes.map((triaje) => (
+              <div key={triaje.id} className="triaje-card">
+                <p>{triaje.descripcion}</p>
+              </div>
+            ))
+          ) : (
+            <p>No hay registros de triaje.</p>
+          )}
+        </div>
 
-      {/* Lista de Recetas */}
-      <div className="receta-list">
-        <h3 className="colorcito">Recetas</h3>
-        {recetas.length > 0 ? (
-          recetas.map((receta) => (
-            <div key={receta.id} className="receta-card">
-              <p className="colorcito">{receta.descripcion}</p>
-            </div>
-          ))
-        ) : (
-          <p>No hay recetas registradas.</p>
-        )}
+        {/* Columna de Recetas */}
+        <div className="receta-column">
+          <h3>Recetas</h3>
+          {recetas.length > 0 ? (
+            recetas.map((receta) => (
+              <div key={receta.id} className="receta-card">
+                <p>{receta.descripcion}</p>
+              </div>
+            ))
+          ) : (
+            <p>No hay recetas registradas.</p>
+          )}
+        </div>
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getFichasAtencion } from '../../../services/apiService';
 import './FichaAtencionList.css'
+import Header from '../Header/Header';
 
 interface FichaAtencion {
   id: number;
@@ -32,6 +33,7 @@ const FichaAtencionList: React.FC = () => {
 
   return (
     <div className="ficha-list-container">
+      <Header/>
       <h2 className="ficha-list-title">Lista de Fichas de Atención</h2>
       <div className="ficha-list">
         {fichas.map((ficha) => (

@@ -1,65 +1,85 @@
+/* Contenedor principal */
 .medico-list-container {
-  margin-top: 20px;
+  font-family: 'Arial', sans-serif;
   padding: 20px;
-  background-color: #f7f9fc;
-  border-radius: 8px;
+  background-color: #f9f9f9;
+  color: #333;
 }
 
+/* Contenedor del contenido */
+.content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Título */
+.title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+/* Lista de médicos */
 .medico-list {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }
 
+/* Tarjetas de médicos */
 .medico-card {
-  background-color: #ffffff;
-  padding: 15px;
+  background-color: #fff;
+  border: 1px solid #ddd;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 300px;
   text-align: center;
-  color: #000;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.medico-card h3 {
-  color: #333;
-  font-size: 1.2em;
-  margin: 0;
-  font-weight: bold;
+.medico-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
-.medico-card p {
+/* Nombre del médico */
+.medico-name {
+  font-size: 1.2rem;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+/* Usuario del médico */
+.medico-username {
+  font-size: 0.9rem;
   color: #555;
-  font-size: 0.9em;
-  margin: 5px 0;
+  margin-bottom: 15px;
 }
 
+/* Botones de las tarjetas */
 .medico-buttons {
   display: flex;
+  justify-content: space-around;
   gap: 10px;
+}
+
+.eliminar-btn,
+.horario-btn {
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .eliminar-btn {
   background-color: #e74c3c;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-.horario-btn {
-  background-color: #3498db;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
 }
 
 .eliminar-btn:hover {
@@ -70,6 +90,52 @@
   background-color: #2980b9;
 }
 
-.hola{
-  color: #3498db;
+/* Botón para crear médico */
+.crear-medico-btn {
+  margin-top: 20px;
+  background-color: #2ecc71;
+  color: #fff;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.crear-medico-btn:hover {
+  background-color: #27ae60;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+  .medico-card {
+    width: 100%;
+  }
+
+  .medico-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .crear-medico-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .medico-card {
+    padding: 15px;
+  }
+
+  .eliminar-btn,
+  .horario-btn,
+  .crear-medico-btn {
+    font-size: 0.8rem;
+    padding: 10px;
+  }
 }
