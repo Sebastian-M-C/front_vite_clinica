@@ -152,3 +152,18 @@ export const getAllRecetas = async () => {
   return response.data;
 };
 
+export const guardarFichaAtencion = async (fichaData: any) => {
+  try {
+    const response = await axios.post('http://localhost:8080/api/fichas', fichaData);
+    return response;
+  } catch (error: unknown) {
+    if (axios.isAxiosError(error)) {
+      console.error('Error en guardarFichaAtencion:', error.response?.data || error.message);
+      throw error; // Re-lanzamos el error para que pueda ser capturado en `handleGuardarFicha`
+    } else {
+      console.error('Error desconocido:', error);
+      throw new Error('Error inesperado al guardar la ficha');
+    }
+  }
+};
+

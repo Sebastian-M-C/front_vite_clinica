@@ -14,14 +14,16 @@ const Home: React.FC = () => {
   return (
     <div className="home-container">
       <header className="home-header">
-        <h1 className="home-title">Prescripto</h1>
-        <nav className="home-nav">
-          <Link to="/home" className="nav-link">Home</Link>
-          <Link to="/especialidades" className="nav-link">Find a specialist</Link>
-          <a href="#about" className="nav-link">About</a>
-          <a href="#contact" className="nav-link">Contact</a>
-        </nav>
-        <button onClick={handleLogout} className="logout-btn">Logout</button>
+        <div className="header-content">
+          <h1 className="home-title">Prescripto</h1>
+          <nav className="home-nav">
+            <Link to="/home" className="nav-link">Home</Link>
+            <Link to="/especialidades" className="nav-link">Find a specialist</Link>
+            <a href="#about" className="nav-link">About</a>
+            <a href="#contact" className="nav-link">Contact</a>
+          </nav>
+          <button onClick={handleLogout} className="logout-btn">Log Out</button> {/* Botón Log Out en rojo */}
+        </div>
       </header>
       <div className="home-content">
         <div className="home-text">
@@ -33,7 +35,7 @@ const Home: React.FC = () => {
           <button className="book-appointment-btn">Book appointment →</button>
         </div>
         <div className="home-image">
-          <img src={imagenDoctores} alt="Trusted Doctors" />
+          <img src={imagenDoctores} alt="Trusted Doctors" className="doctors-image" />
         </div>
       </div>
       <footer className="home-footer">

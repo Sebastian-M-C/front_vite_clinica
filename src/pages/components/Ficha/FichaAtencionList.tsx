@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getFichasAtencion } from '../../../services/apiService';
-import './FichaAtencionList.css'
+import './FichaAtencionList.css';
 import Header from '../Header/Header';
 
 interface FichaAtencion {
@@ -17,6 +17,7 @@ interface FichaAtencion {
 
 const FichaAtencionList: React.FC = () => {
   const [fichas, setFichas] = useState<FichaAtencion[]>([]);
+  const [loading, setLoading] = useState(true); // Estado para mostrar un spinner mientras carga
 
   useEffect(() => {
     const fetchFichas = async () => {
@@ -25,6 +26,8 @@ const FichaAtencionList: React.FC = () => {
         setFichas(data);
       } catch (error) {
         console.error('Error fetching fichas de atención:', error);
+      } finally {
+        setLoading(false); // Oculta el spinner una vez que los datos se cargan
       }
     };
 
@@ -33,20 +36,37 @@ const FichaAtencionList: React.FC = () => {
 
   return (
     <div className="ficha-list-container">
-      <Header/>
+      <Header />
       <h2 className="ficha-list-title">Lista de Fichas de Atención</h2>
-      <div className="ficha-list">
-        {fichas.map((ficha) => (
-          <div key={ficha.id} className="ficha-card">
-            {/* <p className="ficha-item">Fecha de Atención: {ficha.fechaAtencion}</p> */}
-            <p className="ficha-item">Paciente: {ficha.pacienteNombre}</p>
-            <p className="ficha-item">Médico: {ficha.medicoNombre}</p>
-            <p className="ficha-item">Especialidad ID: {ficha.especialidadId}</p>
-            <p className="ficha-item">Horario: {ficha.horarioDescripcion}</p>
-          </div>
-        ))}
-      </div>
+      {loading ? (
+        <p className="loading-message">Cargando fichas de atención...</p>
+      ) : fichas.length === 0 ? (
+        <p className="no-data-message">No hay fichas de atención disponibles.</p>
+      ) : (
+        <div className="ficha-list">
+          {fichas.map((ficha) => (
+            <div key={ficha.id} className="ficha-card">
+              <p className="ficha-item">
+                <strong>Fecha de Atención:</strong> {ficha.fechaAtencion}
+              </p>
+              <p className="ficha-item">
+                <strong>Paciente:</strong> {ficha.pacienteNombre}
+              </p>
+              <p className="ficha-item">
+                <strong>Médico:</strong> {ficha.medicoNombre}
+              </p>
+              <p className="ficha-item">
+                <strong>Especialidad:</strong> {ficha.especialidadId}
+              </p>
+              <p className="ficha-item">
+                <strong>Horario:</strong> {ficha.horarioDescripcion}
+              </p>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
-  );}
+  );
+};
 
 export default FichaAtencionList;
